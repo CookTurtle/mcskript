@@ -1,0 +1,202 @@
+on load:
+	set {fivefruitfinal} to nether star named "&e五蔬果的力量" with lore "&b充滿五蔬果力量的神器" and "&b可以使遊戲不會受到五蔬果的干擾" and "&4綁定角色"
+	set {fivefruitfish} to angler pottery sherd named "&d五蔬果的祝福殘章" with lore "&f五蔬果祝福的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
+	set {fivefruitfarm} to friend pottery sherd named "&d五蔬果的悠閒殘章" with lore "&f五蔬果悠閒的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
+	set {fivefruitzombie} to arms up pottery sherd named "&d五蔬果的憂鬱殘章" with lore "&f五蔬果憂鬱的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
+	set {fivefruitspider} to mourner pottery sherd named "&d五蔬果的蹦蹦跳跳殘章" with lore "&f五蔬果蹦蹦跳跳的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
+	set {fivefruitbig} to blade pottery sherd named "&d五蔬果的勇猛殘章" with lore "&f五蔬果勇猛的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
+	set {fivefruitdeath} to lapis lazuli named "&d五蔬果的恩寵" with lore "&f五蔬果的恩寵" and "&f可以無懲罰的原地滿血復活"
+	set {fivefruitdeathshard} to blue dye named "&f充滿能量的恩寵碎片" with lore "&f碎片中充滿了五蔬果的恩寵能量" and "&f集滿9個可以到合成台合成一個五蔬果的恩寵"
+	set {fivefruitwine} to honey bottle named "&f金門58度高粱酒" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
+	set {fivefruitsmoke} to dried kelp named "&f寶亨香菸" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
+	register new shapeless recipe for {fivefruitfinal} using {fivefruitfish}, {fivefruitfarm}, {fivefruitzombie}, {fivefruitspider}, {fivefruitbig}, crying obsidian, netherite block, elytra and end crystal with id "fivefruitfinal"
+	register new shapeless recipe for {fivefruitdeath} using {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard} and {fivefruitdeathshard} with id "fivefruitdeath"
+On break:
+	if player has nether star named "&e五蔬果的力量":
+		stop
+	else:
+		if event-location's y-coordinate < 50:
+			if event-block is stone or deepslate or cobbled_deepslate or dirt or cobblestone or gravel or tuff or calcite or granite or diorite or andesite:
+				if lore of player's held item contain "&7五蔬果的妥協":
+					chance of 1%:
+						summon a creeper at event-player
+						set name of spawned entity to "自爆自氣的五蔬果"
+				else:
+					chance of 5%:
+						summon a creeper at event-player
+						set name of spawned entity to "自爆自氣的五蔬果"
+on damage of player:
+	chance of 50%:
+		if attacker is a skeleton or zombie or zombified piglin or husk or Stray or spider or cave spider:
+			apply potion of WITHER of tier 1 to victim for 5 seconds
+			send "你因為受到怪物攻擊而失血" to victim
+on break:
+	if player has nether star named "&e五蔬果的力量":
+		stop
+	else:
+		if event-block is coal ore or deepslate coal ore or iron ore or deepslate iron ore or copper ore or deepslate copper ore or gold ore or deepslate gold ore or redstone ore or deepslate redstone ore or emerald ore or deepslate emerald ore or lapis ore or deepslate lapis ore or diamond ore or deepslate diamond ore or nether gold ore or nether quartz ore or ancient_debris:
+			if lore of player's held item contain "&7五蔬果的妥協":
+				chance of 5%:
+					set block to air
+					send "因為五蔬果沒有完全妥協，你挖的東西還是憑空消失了!"
+					cancel event
+			else:
+				chance of 20%:
+					set block to air
+					send "因為五蔬果的貪婪，你挖的東西憑空消失了!"
+					cancel event
+on death of pig:
+	if attacker has nether star named "&e五蔬果的力量":
+		stop
+	else:
+		chance of 50%:
+			apply potion of instant damage of tier 2 to attacker for 0.1 seconds
+			send "因為屠殺五豬果的同胞，你受到制裁!" to attacker
+on death of horse:
+	summon lightning bolt at attacker
+	send "因為屠殺安迪幫的同胞，被降下神罰!" to attacker
+on anvil prepare:
+	if slot 0 of event-inventory is a iron pickaxe or diamond pickaxe or netherite pickaxe:
+		if slot 1 of event-inventory is a emerald named "&e妥協寶石":
+			set {_i} to slot 0 of event-inventory
+			add "&7五蔬果的妥協" to lore of {_i}
+			set event-slot to {_i}
+			set repair cost of event-inventory to 1
+command /fivefruitget <text>:
+	trigger:
+		if arg-1 is "list":
+			send "final:神器    fish:祝福    farm:悠閒" and "zombie:憂鬱    spider:蹦蹦跳跳    big:勇猛" and "death:恩寵   wine:高粱   smoke:香菸"
+		else:
+			give player {fivefruit%arg-1%}
+at 0:00:
+	chance of 5%:
+		set {fivefruitday} to 1
+		broadcast "&4五蔬果今天喝醉了，所有人的視線及移動速度都將受到影響!"
+at 23:50:
+	set {fivefruitday} to 0
+every 20 seconds:
+	loop all players:
+		if {fivefruitday} is 1:
+			if loop-player has {fivefruitfinal}:
+			else:
+				apply potion of darkness of tier 1 to loop-player for 20 seconds
+				apply potion of slowness of tier 1 to loop-player for 20 seconds
+				apply potion of weakness of tier 1 to loop-player for 20 seconds
+				apply potion of resistance of tier 1 to loop-player for 20 seconds
+				apply potion of regeneration of tier 1 to loop-player for 20 seconds
+				apply potion of health boost of tier 1 to loop-player for 20 seconds
+on eat:
+	if {fivefruitday} is 1:
+		if name of event-item is "&f金門58度高粱酒":
+			apply potion of darkness of tier 1 to player for 60 seconds
+			apply potion of slowness of tier 1 to player for 60 seconds
+			apply potion of weakness of tier 1 to player for 60 seconds
+			apply potion of resistance of tier 1 to player for 300 seconds
+			apply potion of regeneration of tier 1 to player for 300 seconds
+			apply potion of health boost of tier 1 to player for 300 seconds
+			apply potion of strength of tier 1 to player for 300 seconds
+			wait 5 ticks
+			remove a glass bottle from player
+		else if name of event-item is "&f寶亨香菸":
+			apply potion of jump boost of tier 1 to player for 60 seconds
+			apply potion of fire resistance of tier 1 to player for 300 seconds
+			apply potion of regeneration of tier 1 to player for 300 seconds
+			apply potion of health boost of tier 1 to player for 300 seconds
+			apply potion of haste of tier 1 to player for 300 seconds
+			apply potion of night vision of tier 1 to player for 300 seconds
+			apply potion of water breathing of tier 1 to player for 300 seconds
+			add 5 to food level of player
+			if player has {fivefruitfinal}:
+			else:
+				make player run command "/fireball" as op
+			wait 60 seconds
+			apply potion of slowness of tier 1 to player for 60 seconds
+		else:
+			send "&c五蔬果酒醉中，除了煙跟高梁酒其他東西都吃不下"
+			cancel event
+	else:
+		if name of event-item is "&f金門58度高粱酒":
+			apply potion of darkness of tier 1 to player for 60 seconds
+			apply potion of slowness of tier 1 to player for 60 seconds
+			apply potion of weakness of tier 1 to player for 60 seconds
+			apply potion of resistance of tier 1 to player for 150 seconds
+			apply potion of regeneration of tier 1 to player for 150 seconds
+			apply potion of health boost of tier 1 to player for 150 seconds
+			apply potion of strength of tier 1 to player for 150 seconds
+			wait 5 ticks
+			remove a glass bottle from player
+		else if name of event-item is "&f寶亨香菸":
+			apply potion of jump boost of tier 1 to player for 60 seconds
+			apply potion of fire resistance of tier 1 to player for 150 seconds
+			apply potion of regeneration of tier 1 to player for 150 seconds
+			apply potion of health boost of tier 1 to player for 150 seconds
+			apply potion of haste of tier 1 to player for 150 seconds
+			apply potion of night vision of tier 1 to player for 150 seconds
+			apply potion of water breathing of tier 1 to player for 150 seconds
+			make player run command "/fireball" as op
+			add 4 to food level of player
+			wait 60 seconds
+			apply potion of slowness of tier 1 to player for 60 seconds
+		else:
+			chance of 90%:
+				apply potion of hunger of tier 1 to player for 10 seconds
+				send "你吃壞肚子了" to player
+on rightclick:
+	if player has nether star named "&e五蔬果的力量":
+		stop
+	else:
+		if type of player's held item are ender eye:
+			chance of 50%:
+				remove 1 ender eye from player's inventory
+				send "因為五蔬果跟你有心結，所以你丟出去的終界之眼被他捏碎了"
+				cancel event
+on fish:
+	if fish state is caught fish:
+		chance of 0.5%:
+			give player {fivefruitfish}
+			broadcast "玩家%event-player%在釣魚時發現了五蔬果的祝福殘章，請祝賀他吧!"
+on break:
+	if event-block is ripe carrot plant or ripe wheat plant or ripe beetroot plant or ripe potato plant:
+		chance of 90%:
+			give player {fivefruitfarm}
+			broadcast "玩家%event-player%在種田時發現了五蔬果的悠閒殘章，請祝賀他吧!"
+on drop:
+	if lore of event-item contains "&4綁定角色":
+		send "你無法丟出綁定角色的物品"
+		cancel event
+on death of zombie or husk or zombie villager:
+	if attacker is a player:
+		chance of 0.5%:
+			give attacker {fivefruitzombie}
+			broadcast "玩家%attacker%獲得五蔬果憂鬱的殘章，請祝賀他吧!除掉怪物(殭屍)!"
+on death of spider or cave spider:
+	if attacker is a player:
+		chance of 0.5%:
+			give attacker {fivefruitspider}
+			broadcast "玩家%attacker%獲得五蔬果蹦蹦跳跳的殘章，請祝賀他吧!除掉怪物(蜘蛛)!"
+on death of Warden:
+	if attacker is a player:
+		chance of 0.1%:
+			give attacker {fivefruitbig}
+			broadcast "玩家%attacker%獲得五蔬果勇猛的殘章，請祝賀他吧!除掉怪物(伏守者)!"
+command /buydeath:
+	trigger:
+		if player's balance < 100:
+			send "&c你沒有足夠的錢可以購買五蔬果的恩寵"
+		else:
+			give player {fivefruitdeath}
+			remove 100 from player's balance
+on death:
+	if victim is not a player:
+		if attacker is a player:
+			chance of 5%:
+				give attacker {fivefruitdeathshard}
+on craft:
+	if event-item is {fivefruitfinal}:
+		broadcast "偉大的冒險家&c%player%&f找回了&e五蔬果的力量!&f發現了神奇的物品!"
+		loop all players:
+			send title "&d偉大的冒險家&c%player%" with subtitle "&d找回了&e五蔬果的力量!&a發現了神奇的物品!" to loop-player for 10 seconds
+			play sound "ui.toast.challenge_complete" to loop-player
+command /fivefruitday <number>:
+	trigger:
+		set {fivefruitday} to arg-1
