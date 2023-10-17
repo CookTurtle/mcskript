@@ -1,0 +1,81 @@
+on death of player:
+	set {deathpos::%victim%} to victim's location
+	set {death::%victim%} to true
+	make console execute command "/god %victim% enable"
+	set gamemode of victim to adventure
+	send "你已經死亡，請輸入/death 開啟復活選單" to victim
+	force victim to respawn
+	wait 1 tick
+	set {deathrespawn::%victim%} to victim's location
+	wait 1 tick
+	do while {deathrespawn::%victim%} is not set:
+		set {deathrespawn::%victim%} to victim's location
+	teleport victim to {deathpos::%victim%}
+on player move:
+	if {death::%player%} is true:
+		if player is not in {deathpos::%player%}:
+			teleport player to {deathpos::%player%}
+on command:
+	if {death::%player%} is true:
+		if command is not "death":
+			send "你已經死亡，請輸入/death 開啟復活選單"
+			cancel event
+on entity target:
+	if entity's target is a player:
+		if {death::%entity's target%} is true:
+			cancel event
+on damage:
+	if attacker is a player:
+		if {death::%attacker%} is true:
+			cancel event
+on pickup:
+	if {death::%player%} is true:
+		cancel event
+on drop:
+	if {death::%player%} is true:
+		cancel event
+on eat:
+	if {death::%player%} is true:
+		cancel event
+command /recovery <text> <player>:
+	trigger:
+		if arg-1 is "now":
+			if player has lapis lazuli named "&d五蔬果的恩寵":
+				delete {death::%arg-2%}
+				delete {deathpos::%arg-2%}
+				remove 1 lapis lazuli named "&d五蔬果的恩寵" from arg-2's inventory
+				make console execute command "/god %arg-2% disable"
+				set gamemode of arg-2 to survival
+				send "&a透過五蔬果的恩寵原地復活了!" to arg-2
+				make console execute command "/heal %arg-2%"
+				delete {deathrespawn::%arg-2%}
+			else:
+				send "&c你身上沒有任何五蔬果的恩寵!" to arg-2
+		if arg-1 is "no":
+			teleport arg-2 to {deathrespawn::%arg-2%}
+			make console execute command "/xp take %player% 1l"
+			delete {death::%arg-2%}
+			delete {deathpos::%arg-2%}
+			make console execute command "/god %arg-2% disable"
+			set gamemode of arg-2 to survival
+			send "&c你受到死亡懲罰:經驗值扣1等級!" to arg-2
+			make console execute command "/heal %arg-2%"
+			wait 10 tick
+			delete {deathrespawn::%arg-2%}
+		if arg-1 is "spawn":
+			if player has lapis lazuli named "&d五蔬果的恩寵":
+				teleport arg-2 to {deathrespawn::%arg-2%}
+				delete {death::%arg-2%}
+				delete {deathpos::%arg-2%}
+				remove 1 lapis lazuli named "&d五蔬果的恩寵" from arg-2's inventory
+				make console execute command "/god %arg-2% disable"
+				set gamemode of arg-2 to survival
+				send "&a你因使用五蔬果的恩寵免於遭受死亡懲罰!" to arg-2
+				make console execute command "/heal %arg-2%"
+				wait 10 tick
+				delete {deathrespawn::%arg-2%}
+			else:
+				send "&c你身上沒有任何五蔬果的恩寵!" to arg-2
+command /death:
+	trigger:
+		make console execute command "/cp death %player%"
