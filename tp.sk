@@ -1,0 +1,105 @@
+on first join:
+	set {tpscollnum::%player%} to 0
+on load:
+	set {tpscoll} to paper named "&d口袋錨點" with lore "&aShift+右鍵:紀錄目前的位置" and "&a紀錄後於聊天欄輸入紀錄點名稱" and "&a點右鍵開啟所有口袋錨點列表"
+on rightclick with paper:
+	if player is sneaking:
+		if {tpscollset::%player%} is not set:
+			if name of player's held item is "&d口袋錨點":
+				set {tpscollset::%player%} to true
+				send "你已啟動口袋錨點紀錄模式，請在聊天欄輸入代號以記錄位置，輸入cancel取消"
+				set {tpscollmem::%player%} to player's location
+		else:
+			send "請先完成上個口袋錨點的命名或打cancel取消"
+	else:
+		if name of player's held item is "&d口袋錨點":
+			make player execute command "/tplist"
+on chat:
+	if {tpscollset::%player%} is true:
+		cancel event
+		if chat message is not "cancel":
+			set {tpscollname::%player%} to chat message
+			set {_a} to 0
+			set {_b} to {tpscollnum::%player%}
+			set {tpscollcheck::%player%} to true
+			loop {_b} times:
+				set {_tpname} to {tpscollid::%player%::%{_a}%}
+				if {tpscollname::%player%} is {_tpname}:
+					set {tpscollcheck::%player%} to false
+					stop loop
+				add 1 to {_a}
+			if {tpscollcheck::%player%} is true:
+				set {tpscollid::%player%::%{tpscollnum::%player%}%} to {tpscollname::%player%}
+				add 1 to {tpscollnum::%player%}
+				set {tpscoll::%player%::%{tpscollname::%player%}%} to {tpscollmem::%player%}
+				send "成功花費一個口袋錨點並設置一個名稱%{tpscollname::%player%}%的錨點在座標%{tpscollmem::%player%}%"
+				delete {tpscollset::%player%}
+				delete {tpscollname::%player%}
+				delete {tpscollmem::%player%}
+				delete {tpscollset::%player%}
+				delete {tpscollcheck::%player%}
+				remove 1 of {tpscoll} from player's inventory
+			else:
+				send "&c你已經有相同名稱的紀錄點了，請重新輸入!"
+				send "%{tpscollcheck::%player%}%"
+		else:
+			if {tpscollset::%player%} is not set:
+				send "&c你沒有任何口袋錨點紀錄模式可以取消"
+			else:
+				delete {tpscollset::%player%}
+				send "&c紀錄已取消!"
+command /tplist:
+	trigger:
+		set {_scollgui} to a new chest inventory with 6 row named "&f口袋錨點列表"
+		set {_loop} to 0
+		loop 54 times:
+			if {tpscollid::%player%::%{_loop}%} is not set:
+				exit loop
+			else:
+				set slot {_loop} of {_scollgui} to grass named "%{tpscollid::%player%::%{_loop}%}%"
+				add 1 to {_loop}
+		open {_scollgui} for player
+command /getscoll <number>:
+	trigger:
+		set {_count} to arg-1
+		give player {_count} of {tpscoll}
+on inventory click:
+	if name of event-inventory is "&f口袋錨點列表":
+		cancel event
+		teleport player to {tpscoll::%player%::%name of event-item%}
+command /test:
+	trigger:
+		send "%{tpscollnum::%player%}%"
+command /setscoll:
+	trigger:
+		set {tpscollnum::%player%} to 0
+command /tpremove <text>:
+    usage: /tpremove <傳送點名稱>
+    trigger:
+        set {_tpname} to arg-1
+        set {_found} to false
+        set {_i} to 0
+        loop {tpscollnum::%player%} + 1 times:
+            set {_tpid} to {tpscollid::%player%::%{_i}%}
+            if {_tpname} is {_tpid}:
+                set {_found} to true
+                set {_removeIndex} to {_i}
+                stop loop
+            add 1 to {_i}
+
+        if {_found} is true:
+            delete {tpscollid::%player%::%{_removeIndex}%}
+            delete {tpscoll::%player%::%{_tpname}%}
+            subtract 1 from {tpscollnum::%player%}
+
+            set {_j} to {_removeIndex}
+            loop {tpscollnum::%player%} + 1 times:
+                set {_nextIndex} to {_j} + 1
+                set {tpscollid::%player%::%{_j}%} to {tpscollid::%player%::%{_nextIndex}%}
+                set {tpscoll::%player%::%{tpscollid::%player%::%{_j}%}%} to {tpscoll::%player%::%{tpscollid::%player%::%{_nextIndex}%}%}
+                add 1 to {_j}
+                stop loop
+            delete {tpscollid::%player%::%{_removeIndex} + 1%}
+            send "成功删除傳送點 %{_tpname}%。"
+        else:
+            send "&c傳送點%{_tpname}%不存在!"
