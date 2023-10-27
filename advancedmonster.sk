@@ -1,0 +1,113 @@
+on load:
+	set {fivefruitlevelup} to diamond named "&d強化寶石" with lore "&5可以將包含鑽石以上等級的斧頭/劍" and "&5透過鐵砧強化附魔等級" and "&5強化後可以使鋒利或截肢剋星或不死剋星的附魔等級提升2" and "&c每把武器僅能使用一次"
+on spawn of creeper:
+	chance of 5%:
+		cancel event
+		set {_random} to a random integer between 1 and 100
+		if {_random} < 31:
+			set {_level} to {_random}
+		else if {_random} > 80:
+			set {_level} to "&d%{_random}%&r"
+		else if {_random} > 50:
+			set {_level} to "&5%{_random}%&r"
+		else if {_random} > 30:
+			set {_level} to "&4%{_random}%&r"
+		spawn a creeper at event-entity
+		set name of spawned entity to "[等級:%{_level}%]<充滿力量的>苦力怕"
+		set max health of spawned entity to {_random} + 10
+		set health of spawned entity to {_random} + 10
+on spawn of zombie:
+	chance of 5%:
+		cancel event
+		set {_random} to a random integer between 1 and 100
+		if {_random} < 31:
+			set {_level} to {_random}
+		else if {_random} > 80:
+			set {_level} to "&d%{_random}%&r"
+		else if {_random} > 50:
+			set {_level} to "&5%{_random}%&r"
+		else if {_random} > 30:
+			set {_level} to "&4%{_random}%&r"
+		spawn a zombie at event-entity
+		set name of spawned entity to "[等級:%{_level}%]<不怕太陽的>菁英殭屍"
+		set helmet of spawned entity to gold helmet
+		set max health of spawned entity to {_random} + 10
+		set health of spawned entity to {_random} + 10
+on spawn of skeleton:
+	chance of 90%:
+		cancel event
+		set {_random} to a random integer between 1 and 100
+		if {_random} < 31:
+			set {_level} to {_random}
+		else if {_random} > 80:
+			set {_level} to "&d%{_random}%&r"
+		else if {_random} > 50:
+			set {_level} to "&5%{_random}%&r"
+		else if {_random} > 30:
+			set {_level} to "&4%{_random}%&r"
+		spawn a skeleton at event-entity
+		set name of spawned entity to "[等級:%{_level}%]<不怕太陽的>菁英骷髏"
+		set helmet of spawned entity to gold helmet
+		set max health of spawned entity to {_random} + 10
+		set health of spawned entity to {_random} + 10
+every 10 minutes: 
+	broadcast "10秒後將清除所有精英實體!"
+	wait 10 seconds
+	loop all zombies and skeletons and creepers:
+		if name of loop-entity contains "等級:":
+			delete loop-entity
+on death:
+	if name of victim contains "等級:":
+		set {_random} to a random integer between 1 and 5
+		set {_name} to name of victim
+		if victim is a creeper:
+			replace every "[等級:" and "]" and "<充滿力量的>苦力怕" with "" in {_name}
+		else if victim is a zombie:
+			replace every "[等級:" and "]" and "<不怕太陽的>菁英殭屍" with "" in {_name}
+		else if victim is a skeleton:
+			replace every "[等級:" and "]" and "<不怕太陽的>菁英骷髏" with "" in {_name}
+		set {_level} to {_name} parsed as an integer
+		set {_money} to {_level} / 10 * {_random}
+		add {_money} to attacker's balance
+		send "&a你透過擊殺&r%name of victim%&a額外獲得了%{_money}%銀幣" to attacker
+		chance of {_level}%:
+			drop {fivefruitdeath} at victim's location
+		chance of {_level} / 10 * {_random}%:
+			drop {fivefruitlevelup} at victim's location
+on anvil prepare:
+	if slot 0 of event-inventory is a diamond axe or netherite axe or diamond sword or netherite sword:
+		if lore of slot 0 of event-inventory contains "&4無法再次強化":
+			stop
+		else:
+			if slot 1 of event-inventory is {fivefruitlevelup}:
+				set {_i} to slot 0 of event-inventory
+				add "&4無法再次強化" to lore of {_i}
+				set {_sharpness} to level of sharpness of {_i}
+				set {_smite} to level of smite of {_i}
+				set {_bane} to level of bane of arthropods of {_i}
+				if {_sharpness} is set:
+					set {_sharpness} to {_sharpness} + 2
+					enchant {_i} with "sharpness %{_sharpness}%" parsed as enchantment type
+				else if {_smite} is set:
+					set {_smite} to {_smite} + 2
+					enchant {_i} with "smite %{_smite}%" parsed as enchantment type
+				else if {_bane} is set:
+					set {_bane} to {_bane} + 2
+					enchant {_i} with "bane of arthropods %{_bane}%" parsed as enchantment type
+				else:
+					stop
+				set event-slot to {_i}
+				set repair cost of event-inventory to 1
+on damage:
+	if name of attacker contains "<不怕太陽的>菁英殭屍":
+		if victim is a player:
+			apply potion of slowness of tier 1 to victim for 5 seconds
+	if name of attacker contains "<不怕太陽的>菁英骷髏":
+		if victim is a player:
+			apply potion of poison of tier 1 to victim for 5 seconds
+command /killadv:
+	trigger:
+		loop all zombies and skeletons and creepers:
+			if name of loop-entity contains "等級:":
+				delete loop-entity
+		send "&c已清除所有精英怪"

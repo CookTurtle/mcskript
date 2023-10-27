@@ -1,0 +1,39 @@
+on load:
+	set {100dollor} to emerald named "&f100銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
+	set {10dollor} to iron ingot named "&f10銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
+on rightclick with emerald:
+	if player is sneaking:
+		if name of tool of player are "&f100銀幣":
+			if player has {100dollor}:
+				remove {100dollor} from player's inventory 
+				add 100 to player's balance
+				send "已存入100銀幣，現在你擁有%player's balance%銀幣"
+on rightclick with iron ingot:
+	if player is sneaking:
+		if name of tool of player are "&f10銀幣":
+			if player has {10dollor}:
+				remove {10dollor} from player's inventory 
+				add 10 to player's balance
+				send "已存入10銀幣，現在你擁有%player's balance%銀幣"
+command /atm <number> <number>:
+	usage: /atm <面額10/100銀幣> <數量>
+	trigger:
+		if arg-1 is not 10 or 100:
+			send "&c請輸入有效面額10/100銀幣"
+		else:
+			if arg-1 is 10:
+				set {_cost} to arg-2 * 10
+				if player's balance < {_cost}:
+					send "&c你沒有足夠的銀幣可以提領!"
+				else:
+					remove {_cost} from player's balance
+					give player arg-2 of {10dollor}
+					send "&a已花費%{_cost}%銀幣購買%arg-2%個10銀幣"
+			if arg-1 is 100:
+				set {_cost} to arg-2 * 100
+				if player's balance < {_cost}:
+					send "&c你沒有足夠的銀幣可以提領!"
+				else:
+					remove {_cost} from player's balance
+					give player arg-2 of {100dollor}
+					send "&a已花費%{_cost}%銀幣購買%arg-2%個100銀幣"

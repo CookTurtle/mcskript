@@ -1,0 +1,151 @@
+on load:
+	set {maxmoroni::zombie} to 200
+	set {maxmoroni::skeleton} to 200
+	set {maxmoroni::spider} to 200
+	set {maxmoroni::creeper} to 200
+	set {maxmoroni::pigzombie} to 200
+	set {maxmoroni::blaze} to 150
+	set {maxmoroni::witherskeleton} to 150
+	set {moroni::0} to "zombie"
+	set {moroni::1} to "skeleton"
+	set {moroni::2} to "spider"
+	set {moroni::3} to "creeper"
+	set {moroni::4} to "pigzombie"
+	set {moroni::5} to "blaze"
+	set {moroni::6} to "witherskeleton"
+on death:
+	if attacker is a player:
+		if victim is a zombie or a husk or a Drowned or a zombie villager:
+			set {_monstertype} to "zombie"
+		if victim is a Stray or a skeleton:
+			set {_monstertype} to "skeleton"
+		if victim is a spider or cave spider:
+			set {_monstertype} to "spider"
+		if victim is a creeper:
+			set {_monstertype} to "creeper"
+		if victim is a Zombified Piglin or Piglin:
+			set {_monstertype} to "pigzombie"
+		if victim is a Wither Skeleton:
+			set {_monstertype} to "witherskeleton"
+		if victim is a blaze:
+			set {_monstertype} to "blaze"
+		if {_monstertype} is set:
+			if {moroni::%attacker%::%{_monstertype}%} is less than {maxmoroni::%{_monstertype}%}:
+				add 1 to {moroni::%attacker%::%{_monstertype}%}
+		if {moroni::%attacker%::%{_monstertype}%} is {maxmoroni::%{_monstertype}%}:
+			send "&a你所擁有的%{_monstertype}%馬羅尼石頭已蒐集完成!" to attacker
+		delete {_monstertype}
+command /moroni <text> <text>:
+	trigger:
+		if arg-1 is "buy":
+			if {moroni::%player%::%arg-2%} is not set:
+				if player's balance > 50:
+					set {moroni::%player%::%arg-2%} to 0
+					remove 50 from player's balance
+					send "&f你已購買一顆%arg-2%的馬羅尼石頭，並花費50銀幣"
+				else:
+					send "&c你沒有足夠的銀幣購買馬羅尼石頭!" to player
+			else:
+				send "&c你已經擁有一個%arg-2%的馬羅尼石頭，無法再次購買!"
+		if arg-1 is "sell":
+			if {moroni::%player%::%arg-2%} is {maxmoroni::%arg-2%}:
+				delete {moroni::%player%::%arg-2%}
+				send "&a已售出%arg-2%的馬羅尼石頭"
+			else:
+				send "&c你所持有的%arg-2%馬羅尼石頭內的標本數量未滿"
+				send "&f蒐集進度:%{moroni::%player%::%arg-2%}%/%{maxmoroni::%arg-2%}%"
+command /moronigui:
+	trigger:
+		set {_loop} to 0
+		loop 7 times:
+			if {moroni::%player%::%{moroni::%{_loop}%}%} is not set:
+				set {_check::%{moroni::%{_loop}%}%} to "&4未購買"
+			else:
+				set {_check::%{moroni::%{_loop}%}%} to "&c標本數量:%{moroni::%player%::%{moroni::%{_loop}%}%}%/%{maxmoroni::%{moroni::%{_loop}%}%}%"
+			add 1 to {_loop}
+		set {_moronigui} to a new chest inventory with 5 row named "&6馬羅尼商店"
+		set {_loop} to 0
+		loop 10 times:
+			set slot {_loop} of {_moronigui} to pink stained glass pane named ""
+			add 1 to {_loop}
+		set {_loop} to 35
+		loop 10 times:
+			set slot {_loop} of {_moronigui} to pink stained glass pane named ""
+			add 1 to {_loop}
+		set slot 17 of {_moronigui} to pink stained glass pane named ""
+		set slot 18 of {_moronigui} to pink stained glass pane named ""
+		set slot 26 of {_moronigui} to pink stained glass pane named ""
+		set slot 27 of {_moronigui} to pink stained glass pane named ""
+		set slot 4 of {_moronigui} to paper named "&a使用方法" with lore "&5點擊左鍵購買該馬羅尼石頭" and "&5點擊右鍵販賣該馬羅尼石頭"
+		set slot 10 of {_moronigui} to skull of ("MHF_Zombie" parsed as offline player) named "&f殭屍馬羅尼石頭" with lore "&5擊殺殭屍.屍殼.沉屍.殭屍村民時可以累積標本" and "&5售價50銀幣" and "%{_check::zombie}%"
+		set slot 11 of {_moronigui} to skull of ("MHF_Skeleton" parsed as offline player) named "&f骷髏馬羅尼石頭" with lore "&5擊殺骷髏.流觸時可以累積標本" and "&5售價50銀幣" and "%{_check::skeleton}%"
+		set slot 12 of {_moronigui} to skull of ("MHF_Spider" parsed as offline player) named "&f蜘蛛馬羅尼石頭" with lore "&5擊殺骷髏.流觸時可以累積標本" and "&5售價50銀幣" and "%{_check::spider}%"
+		set slot 13 of {_moronigui} to skull of ("MHF_Creeper" parsed as offline player) named "&f苦力怕馬羅尼石頭" with lore "&5擊殺苦力怕時可以累積標本" and "&5售價50銀幣" and "%{_check::creeper}%"
+		set slot 14 of {_moronigui} to skull of ("MHF_PigZombie" parsed as offline player) named "&f殭屍豬人馬羅尼石頭" with lore "&5擊殺殭屍豬人.豬布林時可以累積標本" and "&5售價50銀幣" and "%{_check::pigzombie}%"
+		set slot 15 of {_moronigui} to skull of ("MHF_Blaze" parsed as offline player) named "&f烈焰神馬羅尼石頭" with lore "&5擊殺烈焰神時可以累積標本" and "&5售價50銀幣" and "%{_check::blaze}%"
+		set slot 16 of {_moronigui} to wither skeleton skull named "&f凋零骷髏馬羅尼石頭" with lore "&5擊殺凋零骷髏時可以累積標本" and "&5售價50銀幣" and "%{_check::witherskeleton}%"
+		set slot 34 of {_moronigui} to flower banner pattern named "&3查詢所有馬羅尼狀態" with lore "&5點擊查看所有馬羅尼蒐集進度"
+		open {_moronigui} to player
+on inventory click:
+	if name of event-inventory is "&6馬羅尼商店":
+		cancel event
+		if "%click type%" contains "LEFT":
+			if name of event-item is "&f殭屍馬羅尼石頭":
+				make player run command "/moroni buy zombie" as op
+				close player's inventory
+			if name of event-item is "&f骷髏馬羅尼石頭":
+				make player run command "/moroni buy skeleton" as op
+				close player's inventory
+			if name of event-item is "&f蜘蛛馬羅尼石頭":
+				make player run command "/moroni buy spider" as op
+				close player's inventory
+			if name of event-item is "&f苦力怕馬羅尼石頭":
+				make player run command "/moroni buy creeper" as op
+				close player's inventory
+			if name of event-item is "&f殭屍豬人馬羅尼石頭":
+				make player run command "/moroni buy pigzombie" as op
+				close player's inventory
+			if name of event-item is "&f烈焰神馬羅尼石頭":
+				make player run command "/moroni buy blaze" as op
+				close player's inventory
+			if name of event-item is "&f凋零骷髏馬羅尼石頭":
+				make player run command "/moroni buy witherskeleton" as op
+				close player's inventory
+			if name of event-item is "&3查詢所有馬羅尼狀態":
+				make player run command "/moronilist" as op
+				close player's inventory
+		else if "%click type%" contains "RIGHT":
+			if name of event-item is "&f殭屍馬羅尼石頭":
+				make player run command "/moroni sell zombie" as op
+				close player's inventory
+			if name of event-item is "&f骷髏馬羅尼石頭":
+				make player run command "/moroni sell skeleton" as op
+				close player's inventory
+			if name of event-item is "&f蜘蛛馬羅尼石頭":
+				make player run command "/moroni sell spider" as op
+				close player's inventory
+			if name of event-item is "&f苦力怕馬羅尼石頭":
+				make player run command "/moroni sell creeper" as op
+				close player's inventory
+			if name of event-item is "&f殭屍豬人馬羅尼石頭":
+				make player run command "/moroni sell pigzombie" as op
+				close player's inventory
+			if name of event-item is "&f烈焰神馬羅尼石頭":
+				make player run command "/moroni sell blaze" as op
+				close player's inventory
+			if name of event-item is "&f凋零骷髏馬羅尼石頭":
+				make player run command "/moroni sell witherskeleton" as op
+				close player's inventory
+command /moroniset <text> <number>:
+	trigger:
+		set {moroni::%player%::%arg-1%} to arg-2
+command /moronilist:
+	trigger:
+		set {_loop} to 0
+		send "&f所有馬羅尼石頭的狀態:"
+		loop 7 times:
+			if {moroni::%player%::%{moroni::%{_loop}%}%} is not set:
+				send "%{moroni::%{_loop}%}%:&4未購買"
+			else:
+				send "%{moroni::%{_loop}%}%標本數量:%{moroni::%player%::%{moroni::%{_loop}%}%}%/%{maxmoroni::%{moroni::%{_loop}%}%}%"
+			add 1 to {_loop}
