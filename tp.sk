@@ -1,7 +1,7 @@
 on first join:
 	set {tpscollnum::%player%} to 0
 on load:
-	set {tpscoll} to paper named "&d口袋錨點" with lore "&aShift+右鍵:紀錄目前的位置" and "&a紀錄後於聊天欄輸入紀錄點名稱" and "&a點右鍵開啟所有口袋錨點列表"
+	set {tpscoll} to glowing paper named "&d口袋錨點" with lore "&aShift+右鍵:紀錄目前的位置" and "&a紀錄後於聊天欄輸入紀錄點名稱" and "&a點右鍵開啟所有口袋錨點列表"
 on rightclick with paper:
 	if player is sneaking:
 		if {tpscollset::%player%} is not set:

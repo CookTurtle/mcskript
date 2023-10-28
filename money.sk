@@ -1,6 +1,6 @@
 on load:
-	set {100dollor} to emerald named "&f100銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
-	set {10dollor} to iron ingot named "&f10銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
+	set {100dollor} to glowing emerald named "&f100銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
+	set {10dollor} to glowing iron ingot named "&f10銀幣" with lore "&5Shift+右鍵可以將銀幣存入戶頭中"
 on rightclick with emerald:
 	if player is sneaking:
 		if name of tool of player are "&f100銀幣":

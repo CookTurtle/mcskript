@@ -78,4 +78,7 @@ command /recovery <text> <player>:
 				send "&c你身上沒有任何五蔬果的恩寵!" to arg-2
 command /death:
 	trigger:
-		make console execute command "/cp death %player%"
+		if {death::%player%} is true:
+			make console execute command "/cp death %player%"
+		else:
+			send "&c你可還沒死呢!就想先體驗死亡嗎?"

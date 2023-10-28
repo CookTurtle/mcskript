@@ -5,10 +5,11 @@ on load:
 	set {fivefruitzombie} to arms up pottery sherd named "&d五蔬果的憂鬱殘章" with lore "&f五蔬果憂鬱的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
 	set {fivefruitspider} to mourner pottery sherd named "&d五蔬果的蹦蹦跳跳殘章" with lore "&f五蔬果蹦蹦跳跳的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
 	set {fivefruitbig} to blade pottery sherd named "&d五蔬果的勇猛殘章" with lore "&f五蔬果勇猛的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
-	set {fivefruitdeath} to lapis lazuli named "&d五蔬果的恩寵" with lore "&f五蔬果的恩寵" and "&f可以無懲罰的原地滿血復活"
+	set {fivefruitdeath} to glowing lapis lazuli named "&d五蔬果的恩寵" with lore "&f五蔬果的恩寵" and "&f可以無懲罰的原地滿血復活"
 	set {fivefruitdeathshard} to blue dye named "&f充滿能量的恩寵碎片" with lore "&f碎片中充滿了五蔬果的恩寵能量" and "&f集滿9個可以到合成台合成一個五蔬果的恩寵"
 	set {fivefruitwine} to honey bottle named "&f金門58度高粱酒" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
 	set {fivefruitsmoke} to dried kelp named "&f寶亨香菸" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
+	set {fivefruitnice} to glowing emerald named "&e妥協寶石" with lore "&9可以強化包含鐵品質以上的十字鎬" and "&9可透過鐵砧強化" and "&9強化後可以降低挖礦石遭受五蔬果事件的機率"
 	register new shapeless recipe for {fivefruitfinal} using {fivefruitfish}, {fivefruitfarm}, {fivefruitzombie}, {fivefruitspider}, {fivefruitbig}, crying obsidian, netherite block, elytra and end crystal with id "fivefruitfinal"
 	register new shapeless recipe for {fivefruitdeath} using {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard}, {fivefruitdeathshard} and {fivefruitdeathshard} with id "fivefruitdeath"
 On break:
@@ -79,12 +80,12 @@ every 20 seconds:
 		if {fivefruitday} is 1:
 			if loop-player has {fivefruitfinal}:
 			else:
-				apply potion of darkness of tier 1 to loop-player for 20 seconds
-				apply potion of slowness of tier 1 to loop-player for 20 seconds
-				apply potion of weakness of tier 1 to loop-player for 20 seconds
-				apply potion of resistance of tier 1 to loop-player for 20 seconds
-				apply potion of regeneration of tier 1 to loop-player for 20 seconds
-				apply potion of health boost of tier 1 to loop-player for 20 seconds
+				apply potion of darkness of tier 1 to loop-player for 21 seconds
+				apply potion of slowness of tier 1 to loop-player for 21 seconds
+				apply potion of weakness of tier 1 to loop-player for 21 seconds
+				apply potion of resistance of tier 1 to loop-player for 21 seconds
+				apply potion of regeneration of tier 1 to loop-player for 21 seconds
+				apply potion of health boost of tier 1 to loop-player for 21 seconds
 on eat:
 	if {fivefruitday} is 1:
 		if name of event-item is "&f金門58度高粱酒":
@@ -138,7 +139,7 @@ on eat:
 			wait 60 seconds
 			apply potion of slowness of tier 1 to player for 60 seconds
 		else:
-			chance of 90%:
+			chance of 30%:
 				apply potion of hunger of tier 1 to player for 10 seconds
 				send "你吃壞肚子了" to player
 on rightclick:

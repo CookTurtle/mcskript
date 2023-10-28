@@ -1,5 +1,5 @@
 on load:
-	set {fivefruitlevelup} to diamond named "&d強化寶石" with lore "&5可以將包含鑽石以上等級的斧頭/劍" and "&5透過鐵砧強化附魔等級" and "&5強化後可以使鋒利或截肢剋星或不死剋星的附魔等級提升2" and "&c每把武器僅能使用一次"
+	set {fivefruitlevelup} to glowing diamond named "&d強化寶石" with lore "&5可以將包含鑽石以上等級的斧頭/劍" and "&5透過鐵砧強化附魔等級" and "&5強化後可以使鋒利或截肢剋星或不死剋星的附魔等級提升2" and "&c每把武器僅能使用一次"
 on spawn of creeper:
 	chance of 5%:
 		cancel event

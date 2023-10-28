@@ -1,0 +1,294 @@
+on load:
+	set {adven::sharpness} to glowing diamond named "&f鋒利附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::bane} to glowing diamond named "&f節肢剋星附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::efficiency} to glowing diamond named "&f效率附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::impaling} to glowing diamond named "&f魚叉附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::power} to glowing diamond named "&f強力附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::smite} to glowing diamond named "&f不死剋星附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::blast} to glowing diamond named "&f爆炸保護附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::fall} to glowing diamond named "&f輕盈附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::fprotection} to glowing diamond named "&f火焰保護附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::protection} to glowing diamond named "&f保護附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::pprotection} to glowing diamond named "&f投射物保護附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::piercing} to glowing diamond named "&f貫穿附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::depth} to glowing diamond named "&f深海漫遊附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::fortune} to glowing diamond named "&f幸運附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::looting} to glowing diamond named "&f掠奪附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::loyalty} to glowing diamond named "&f忠誠附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::lucksea} to glowing diamond named "&f海洋的祝福附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::lure} to glowing diamond named "&f魚餌附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::quick} to glowing diamond named "&f快速上弦附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::breath} to glowing diamond named "&f水中呼吸附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::riptide} to glowing diamond named "&f波濤附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::soulspeed} to glowing diamond named "&f靈魂疾走附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::sneak} to glowing diamond named "&f迅捷潛行附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::sweeping} to glowing diamond named "&f橫掃之刃附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::thorns} to glowing diamond named "&f尖刺附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::unbreaking} to glowing diamond named "&f耐久附魔石" with lore "&5可以用於製作蘊含能量的附魔書"
+	set {adven::fire} to glowing diamond named "&f燃燒附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::frost} to glowing diamond named "&f冰霜行者附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::knockback} to glowing diamond named "&f擊退附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::punch} to glowing diamond named "&f衝擊附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::aqua} to glowing diamond named "&f親水性附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::channel} to glowing diamond named "&f喚雷附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::flame} to glowing diamond named "&f火焰附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::infinity} to glowing diamond named "&f無限附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::muti} to glowing diamond named "&f分裂箭矢附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::silk} to glowing diamond named "&f絲綢附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::exp} to glowing diamond named "&f修補附魔石" with lore "&5可以用於製作附魔書"
+	set {adven::expmini} to glowing prismarine crystals named "&f破碎的修補附魔石" with lore "&5蒐集滿9個可以製作成f修補附魔石"
+	set {advenbook::sharpness} to glowing book named "&e蘊含能量的鋒利附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f鋒利I.II.III.IV附魔書" and "&f書"
+	set {advenbook::bane} to glowing book named "&e蘊含能量的節肢剋星附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f節肢剋星I.II.III.IV附魔書" and "&f書"
+	set {advenbook::efficiency} to glowing book named "&e蘊含能量的效率附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f效率I.II.III.IV附魔書" and "&f書"
+	set {advenbook::impaling} to glowing book named "&e蘊含能量的魚叉附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f魚叉I.II.III.IV附魔書" and "&f書"
+	set {advenbook::power} to glowing book named "&e蘊含能量的強力附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f強力I.II.III.IV附魔書" and "&f書"
+	set {advenbook::smite} to glowing book named "&e蘊含能量的不死剋星附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f不死剋星I.II.III.IV附魔書" and "&f書"
+	set {advenbook::blast} to glowing book named "&e蘊含能量的爆炸保護附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f爆炸保護I.II.III附魔書" and "&f書"
+	set {advenbook::fall} to glowing book named "&e蘊含能量的輕盈附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f輕盈I.II.III附魔書" and "&f書"
+	set {advenbook::fprotection} to glowing book named "&e蘊含能量的火焰保護附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f火焰保護I.II.III附魔書" and "&f書"
+	set {advenbook::protection} to glowing book named "&e蘊含能量的保護附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f保護I.II.III附魔書" and "&f書"
+	set {advenbook::pprotection} to glowing book named "&e蘊含能量的投射物保護附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f投射物保護I.II.III附魔書" and "&f書"
+	set {advenbook::piercing} to glowing book named "&e蘊含能量的貫穿附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f貫穿I.II.III附魔書" and "&f書"
+	set {advenbook::depth} to glowing book named "&e蘊含能量的深海漫遊附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f深海漫遊I.II附魔書" and "&f書"
+	set {advenbook::fortune} to glowing book named "&e蘊含能量的幸運附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f幸運I.II附魔書" and "&f書"
+	set {advenbook::looting} to glowing book named "&e蘊含能量的掠奪附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f掠奪I.II附魔書" and "&f書"
+	set {advenbook::loyalty} to glowing book named "&e蘊含能量的忠誠附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f忠誠I.II附魔書" and "&f書"
+	set {advenbook::lucksea} to glowing book named "&e蘊含能量的海洋的祝福附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f海洋的祝福I.II名稱附魔書" and "&f書"
+	set {advenbook::lure} to glowing book named "&e蘊含能量的魚餌附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f魚餌I.II名稱附魔書" and "&f書"
+	set {advenbook::quick} to glowing book named "&e蘊含能量的快速上弦附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f快速上弦I.II名稱附魔書" and "&f書"
+	set {advenbook::breath} to glowing book named "&e蘊含能量的水中呼吸附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f水中呼吸I.II名稱附魔書" and "&f書"
+	set {advenbook::riptide} to glowing book named "&e蘊含能量的波濤附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f波濤I.II名稱附魔書" and "&f書"
+	set {advenbook::soulspeed} to glowing book named "&e蘊含能量的靈魂疾走附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f靈魂疾走I.II名稱附魔書" and "&f書"
+	set {advenbook::sneak} to glowing book named "&e蘊含能量的迅捷潛行附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f迅捷潛行I.II名稱附魔書" and "&f書"
+	set {advenbook::sweeping} to glowing book named "&e蘊含能量的橫掃之刃附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f橫掃之刃I.II名稱附魔書" and "&f書"
+	set {advenbook::thorns} to glowing book named "&e蘊含能量的尖刺附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f尖刺I.II名稱附魔書" and "&f書"
+	set {advenbook::unbreaking} to glowing book named "&e蘊含能量的耐久附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f耐久I.II名稱附魔書" and "&f書"
+	register new shapeless recipe for {advenbook::sharpness} using {adven::sharpness}, book, air, air, air, air, air, air and air with id "sharpness"
+	register new shapeless recipe for {advenbook::bane} using {adven::bane}, book, air, air, air, air, air, air and air with id "bane"
+	register new shapeless recipe for {advenbook::efficiency} using {adven::efficiency}, book, air, air, air, air, air, air and air with id "efficiency"
+	register new shapeless recipe for {advenbook::impaling} using {adven::impaling}, book, air, air, air, air, air, air and air with id "impaling"
+	register new shapeless recipe for {advenbook::power} using {adven::power}, book, air, air, air, air, air, air and air with id "power"
+	register new shapeless recipe for {advenbook::smite} using {adven::smite}, book, air, air, air, air, air, air and air with id "smite"
+	register new shapeless recipe for {advenbook::blast} using {adven::blast}, book, air, air, air, air, air, air and air with id "blast"
+	register new shapeless recipe for {advenbook::fall} using {adven::fall}, book, air, air, air, air, air, air and air with id "fall"
+	register new shapeless recipe for {advenbook::fprotection} using {adven::fprotection}, book, air, air, air, air, air, air and air with id "fprotection"
+	register new shapeless recipe for {advenbook::pprotection} using {adven::pprotection}, book, air, air, air, air, air, air and air with id "pprotection"
+	register new shapeless recipe for {advenbook::protection} using {adven::protection}, book, air, air, air, air, air, air and air with id "protection"
+	register new shapeless recipe for {advenbook::piercing} using {adven::piercing}, book, air, air, air, air, air, air and air with id "piercing"
+	register new shapeless recipe for {advenbook::depth} using {adven::depth}, book, air, air, air, air, air, air and air with id "depth"
+	register new shapeless recipe for {advenbook::fortune} using {adven::fortune}, book, air, air, air, air, air, air and air with id "fortune"
+	register new shapeless recipe for {advenbook::looting} using {adven::looting}, book, air, air, air, air, air, air and air with id "looting"
+	register new shapeless recipe for {advenbook::loyalty} using {adven::loyalty}, book, air, air, air, air, air, air and air with id "loyalty"
+	register new shapeless recipe for {advenbook::lucksea} using {adven::lucksea}, book, air, air, air, air, air, air and air with id "lucksea"
+	register new shapeless recipe for {advenbook::lure} using {adven::lure}, book, air, air, air, air, air, air and air with id "lure"
+	register new shapeless recipe for {advenbook::quick} using {adven::quick}, book, air, air, air, air, air, air and air with id "quick"
+	register new shapeless recipe for {advenbook::breath} using {adven::breath}, book, air, air, air, air, air, air and air with id "breath"
+	register new shapeless recipe for {advenbook::riptide} using {adven::riptide}, book, air, air, air, air, air, air and air with id "riptide"
+	register new shapeless recipe for {advenbook::soulspeed} using {adven::soulspeed}, book, air, air, air, air, air, air and air with id "soulspeed"
+	register new shapeless recipe for {advenbook::sneak} using {adven::sneak}, book, air, air, air, air, air, air and air with id "sneak"
+	register new shapeless recipe for {advenbook::sweeping} using {adven::sweeping}, book, air, air, air, air, air, air and air with id "sweeping"
+	register new shapeless recipe for {advenbook::thorns} using {adven::thorns}, book, air, air, air, air, air, air and air with id "thorns"
+	register new shapeless recipe for {advenbook::unbreaking} using {adven::unbreaking}, book, air, air, air, air, air, air and air with id "unbreaking"
+	set {advenedbook::fire} to enchanted book
+	enchant {advenedbook::fire} with fire aspect 1
+	register new shapeless recipe for {advenedbook::fire} using {adven::fire}, book, air, air, air, air, air, air and air with id "fire"
+	set {advenedbook::frost} to enchanted book
+	enchant {advenedbook::frost} with frost walker 1
+	register new shapeless recipe for {advenedbook::frost} using {adven::frost}, book, air, air, air, air, air, air and air with id "frost"
+	set {advenedbook::knockback} to enchanted book
+	enchant {advenedbook::knockback} with knockback 1
+	register new shapeless recipe for {advenedbook::knockback} using {adven::knockback}, book, air, air, air, air, air, air and air with id "knockback"
+	set {advenedbook::punch} to enchanted book
+	enchant {advenedbook::punch} with punch 1
+	register new shapeless recipe for {advenedbook::punch} using {adven::punch}, book, air, air, air, air, air, air and air with id "punch"
+	set {advenedbook::aqua} to enchanted book
+	enchant {advenedbook::aqua} with aqua affinity 1
+	register new shapeless recipe for {advenedbook::aqua} using {adven::aqua}, book, air, air, air, air, air, air and air with id "aqua"
+	set {advenedbook::channel} to enchanted book
+	enchant {advenedbook::channel} with channeling 1
+	register new shapeless recipe for {advenedbook::channel} using {adven::channel}, book, air, air, air, air, air, air and air with id "channel"
+	set {advenedbook::flame} to enchanted book
+	enchant {advenedbook::flame} with flame 1
+	register new shapeless recipe for {advenedbook::flame} using {adven::flame}, book, air, air, air, air, air, air and air with id "flame"
+	set {advenedbook::infinity} to enchanted book
+	enchant {advenedbook::infinity} with infinity 1
+	register new shapeless recipe for {advenedbook::infinity} using {adven::infinity}, book, air, air, air, air, air, air and air with id "infinity"
+	set {advenedbook::muti} to enchanted book
+	enchant {advenedbook::muti} with multishot 1
+	register new shapeless recipe for {advenedbook::muti} using {adven::muti}, book, air, air, air, air, air, air and air with id "multishot"
+	set {advenedbook::silk} to enchanted book
+	enchant {advenedbook::silk} with silk touch 1
+	register new shapeless recipe for {advenedbook::silk} using {adven::silk}, book, air, air, air, air, air, air and air with id "silk"
+	register new shapeless recipe for {adven::exp} using {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini} and {adven::expmini} with id "expmini"
+	set {advenedbook::exp} to enchanted book
+	enchant {advenedbook::exp} with mending 1
+	register new shapeless recipe for {advenedbook::exp} using {adven::exp}, book, air, air, air, air, air, air and air with id "exp"
+on rightclick on enchanting table:
+	cancel event
+command /adven <text> <text> <number>:
+	trigger:
+		if arg-1 is "book":
+			if {advenbook::%arg-2%} is set:
+				give player arg-3 of {advenbook::%arg-2%}
+			else:
+				send "&c代號不存在"
+		if arg-1 is "stone":
+			if {adven::%arg-2%} is set:
+				give player arg-3 of {adven::%arg-2%}
+			else:
+				send "&c代號不存在"
+on rightclick:
+	if name of player's held item contains "&e蘊含能量的":
+		if player doesn't have enough space for 1 of stone:
+			send "&c沒有空的欄位"
+			stop
+		else:
+			if name of event-item is "&e蘊含能量的鋒利附魔書":
+				set {_enchant} to "sharpness"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的節肢剋星附魔書":
+				set {_enchant} to "bane of arthropods"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的效率附魔書":
+				set {_enchant} to "efficiency"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的魚叉附魔書":
+				set {_enchant} to "impaling"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的強力附魔書":
+				set {_enchant} to "power"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的不死剋星附魔書":
+				set {_enchant} to "smite"
+				set {_max} to 5
+			else if name of event-item is "&e蘊含能量的貫穿附魔書":
+				set {_enchant} to "piercing"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的保護附魔書":
+				set {_enchant} to "protection"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的火焰保護附魔書":
+				set {_enchant} to "fire protection"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的輕盈附魔書":
+				set {_enchant} to "feather falling"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的爆炸保護附魔書":
+				set {_enchant} to "blast protection"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的投射物保護附魔書":
+				set {_enchant} to "projectile protection"
+				set {_max} to 4
+			else if name of event-item is "&e蘊含能量的水中呼吸附魔書":
+				set {_enchant} to "respiration"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的尖刺附魔書":
+				set {_enchant} to "thorns"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的深海漫遊附魔書":
+				set {_enchant} to "depth strider"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的幸運附魔書":
+				set {_enchant} to "fortune"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的掠奪附魔書":
+				set {_enchant} to "looting"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的忠誠附魔書":
+				set {_enchant} to "loyalty"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的海洋的祝福附魔書":
+				set {_enchant} to "luck of the sea"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的魚餌附魔書":
+				set {_enchant} to "lure"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的快速上弦附魔書":
+				set {_enchant} to "quick charge"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的波濤附魔書":
+				set {_enchant} to "riptide"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的靈魂疾走附魔書":
+				set {_enchant} to "soul speed"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的橫掃之刃附魔書":
+				set {_enchant} to "sweeping edge"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的耐久附魔書":
+				set {_enchant} to "unbreaking"
+				set {_max} to 3
+			else if name of event-item is "&e蘊含能量的迅捷潛行附魔書":
+				set {_enchant} to "swift sneak"
+				set {_max} to 3
+			set {_enchanttw} to name of event-item
+			replace every "&e蘊含能量的" and "附魔書" with "" in {_enchanttw}
+			remove 1 of event-item from player's inventory
+			if {_max} is 5:
+				chance of 30%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%1附魔書"
+					stop
+				chance of 10%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%2附魔書"
+					stop
+				chance of 8%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 3" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%3附魔書"
+					stop
+				chance of 2%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 4" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%4附魔書"
+					stop
+				give player a book
+				send "&a你獲得了一個書"
+			else if {_max} is 4:
+				chance of 40%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%1附魔書"
+					stop
+				chance of 8%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%2附魔書"
+					stop
+				chance of 42%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 3" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%3附魔書"
+					stop
+				give player a book
+				send "&a你獲得了一個書"
+			else if {_max} is 3:
+				chance of 30%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%1附魔書"
+					stop
+				chance of 10%:
+					set {_book} to a enchanted book
+					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
+					give player {_book}
+					send "&a你獲得了一個%{_enchanttw}%2附魔書"
+					stop
+				give player a book
+				send "&a你獲得了一個書"
+on death:	
+	if victim is not a player:
+		if damager is a player:
+			chance of 5%:
+				drop {adven::expmini} at victim

@@ -1,0 +1,4 @@
+on eat:
+	if event-item is rabbit or chicken or mutton or cod or salmon or tropical fish or pufferfish or beef or porkchop or poisonous potato:
+		send "你因為吃了生的東西而嚴重腹瀉"
+		apply potion of hunger of tier 1 to player for 30 seconds
