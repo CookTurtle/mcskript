@@ -1,0 +1,16 @@
+on preparing craft:
+	if type of event-item is book or enchanted book or lapis lazuli or nether star:
+		stop
+	else:
+		if event-item is netherite ingot named "&f修補附魔石":
+			stop
+		else:
+			set {_loop} to 1
+			loop 9 times:
+				if name of slot {_loop} of event-inventory is set:
+					set slot 0 of event-inventory to a air
+				else:
+					add 1 to {_loop}
+on anvil prepare:
+	if slot 1 of event-inventory is not {fivefruitnice} or {fivefruitlevelup}:
+		set event-slot to air
