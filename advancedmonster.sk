@@ -34,7 +34,7 @@ on spawn of zombie:
 		set max health of spawned entity to {_random} + 10
 		set health of spawned entity to {_random} + 10
 on spawn of skeleton:
-	chance of 90%:
+	chance of 5%:
 		cancel event
 		set {_random} to a random integer between 1 and 100
 		if {_random} < 31:
@@ -70,7 +70,7 @@ on death:
 		set {_money} to {_level} / 10 * {_random}
 		add {_money} to attacker's balance
 		send "&a你透過擊殺&r%name of victim%&a額外獲得了%{_money}%銀幣" to attacker
-		chance of {_level}%:
+		chance of {_level} / 2%:
 			drop {fivefruitdeath} at victim's location
 		chance of {_level} / 10 * {_random}%:
 			drop {fivefruitlevelup} at victim's location
@@ -100,11 +100,13 @@ on anvil prepare:
 				set repair cost of event-inventory to 1
 on damage:
 	if name of attacker contains "<不怕太陽的>菁英殭屍":
-		if victim is a player:
-			apply potion of slowness of tier 1 to victim for 5 seconds
+		if victim is not defending:
+			if victim is a player:
+				apply potion of slowness of tier 1 to victim for 5 seconds
 	if name of attacker contains "<不怕太陽的>菁英骷髏":
-		if victim is a player:
-			apply potion of poison of tier 1 to victim for 5 seconds
+		if victim is not defending:
+			if victim is a player:
+				apply potion of poison of tier 1 to victim for 5 seconds
 command /killadv:
 	trigger:
 		loop all zombies and skeletons and creepers:

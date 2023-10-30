@@ -11,10 +11,12 @@ on death of player:
 	do while {deathrespawn::%victim%} is not set:
 		set {deathrespawn::%victim%} to victim's location
 	teleport victim to {deathpos::%victim%}
+	make victim run command "/death" as op
 on player move:
 	if {death::%player%} is true:
 		if player is not in {deathpos::%player%}:
 			teleport player to {deathpos::%player%}
+			send "你已經死亡，請輸入/death 開啟復活選單"
 on command:
 	if {death::%player%} is true:
 		if command is not "death":
@@ -28,6 +30,7 @@ on damage:
 	if attacker is a player:
 		if {death::%attacker%} is true:
 			cancel event
+			send "你已經死亡，請輸入/death 開啟復活選單" to attacker
 on pickup:
 	if {death::%player%} is true:
 		cancel event
@@ -37,6 +40,7 @@ on drop:
 on eat:
 	if {death::%player%} is true:
 		cancel event
+		send "你已經死亡，請輸入/death 開啟復活選單"
 command /recovery <text> <player>:
 	trigger:
 		if arg-1 is "now":
@@ -53,12 +57,13 @@ command /recovery <text> <player>:
 				send "&c你身上沒有任何五蔬果的恩寵!" to arg-2
 		if arg-1 is "no":
 			teleport arg-2 to {deathrespawn::%arg-2%}
-			make console execute command "/xp take %player% 1l"
+			set {_lossbalance} to (balance of player /20)
+			remove {_lossbalance} from player's balance
 			delete {death::%arg-2%}
 			delete {deathpos::%arg-2%}
 			make console execute command "/god %arg-2% disable"
 			set gamemode of arg-2 to survival
-			send "&c你受到死亡懲罰:經驗值扣1等級!" to arg-2
+			send "&c你受到死亡懲罰:%{_lossbalance}%銀幣頻空消失了!" to arg-2
 			make console execute command "/heal %arg-2%"
 			wait 10 tick
 			delete {deathrespawn::%arg-2%}
@@ -82,3 +87,7 @@ command /death:
 			make console execute command "/cp death %player%"
 		else:
 			send "&c你可還沒死呢!就想先體驗死亡嗎?"
+on rightclick:
+	if {death::%player%} is true:
+		cancel event
+		send "你已經死亡，請輸入/death 開啟復活選單"

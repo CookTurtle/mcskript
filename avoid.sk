@@ -14,3 +14,40 @@ on preparing craft:
 on anvil prepare:
 	if slot 1 of event-inventory is not {fivefruitnice} or {fivefruitlevelup}:
 		set event-slot to air
+on explode:
+	if event-entity is a creeper:
+		set {_place} to event-entity's location
+		play sound "entity.generic.explode" at {_place}
+		cancel the event
+command /money:
+	trigger:
+		send "你擁有%balance of player%銀幣"
+command /shop:
+	trigger:
+		make player run command "/warp shop" as op
+on spawn:
+	if "%Spawn Reason%" is "drowned":
+		cancel event
+	if "%Spawn Reason%" is "mob spawner":
+		cancel event
+on rightclick:
+	if event-block is spruce log or jungle log or birch log or oak log or acacia log or dark oak log or mangrove log or cherry log or crimson stem or warped stem:
+		if player's held item is wooden axe or stone axe or iron axe or golden axe or diamond axe or netherite axe:
+			if player is defending:
+				cancel event
+on rightclick:
+	if event-block is smithing table:
+		loop all items in the player's inventory:
+			if name of loop-item is "&f修補附魔石":
+				cancel event
+				send "&c請將背包中所有&f修補附魔石&c移除，否則無法開啟鍛造台!"
+				stop
+		set {smithing::%player%} to true
+on pickup:
+	if {smithing::%player%} is true:
+		cancel event
+on inventory close:
+	if {smithing::%player%} is set:
+		delete {smithing::%player%}
+on spawn of phantom:
+	cancel event

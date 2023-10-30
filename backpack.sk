@@ -1,0 +1,25 @@
+command /backpack:
+	trigger:
+		set {_bp} to a new chest inventory with 5 row with name "&4角色背包"
+		open {_bp} to player
+		set {_slot} to 0
+		loop 45 times:
+			set slot {_slot} of current inventory of player to {bp::%player%::%{_slot}%}
+			add 1 to {_slot}
+on inventory close:
+	if name of event-inventory is "&4角色背包":
+		set {_slot} to 0
+		loop 45 times:
+			set {bp::%player%::%{_slot}%} to slot {_slot} of current inventory of player
+			add 1 to {_slot}
+on inventory click:
+	if name of event-inventory is "&4角色背包":
+		if event-item is not set:
+			stop
+		if name of event-item is not set:
+			cancel event
+			send "&c無法放入原版物品"
+	if lore of event-item contains "&4綁定角色":
+		if name of event-inventory is not "&4角色背包":
+			cancel event
+			send "&c綁定角色的物品僅能放入角色背包"

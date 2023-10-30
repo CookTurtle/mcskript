@@ -36,7 +36,7 @@ on load:
 	set {adven::muti} to glowing copper ingot named "&f分裂箭矢附魔石" with lore "&5可以用於製作附魔書"
 	set {adven::silk} to glowing copper ingot named "&f絲綢附魔石" with lore "&5可以用於製作附魔書"
 	set {adven::exp} to glowing netherite ingot named "&f修補附魔石" with lore "&5可以用於製作附魔書"
-	set {adven::expmini} to glowing prismarine crystals named "&f破碎的修補附魔石" with lore "&5蒐集滿9個可以製作成f修補附魔石"
+	set {adven::expmini} to glowing prismarine crystals named "&f破碎的修補附魔石" with lore "&5蒐集滿9個可以製作成&f修補附魔石"
 	set {advenbook::sharpness} to glowing book named "&e蘊含能量的鋒利附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f鋒利I.II.III.IV附魔書" and "&f書"
 	set {advenbook::bane} to glowing book named "&e蘊含能量的節肢剋星附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f節肢剋星I.II.III.IV附魔書" and "&f書"
 	set {advenbook::efficiency} to glowing book named "&e蘊含能量的效率附魔書" with lore "&5右鍵使用機率性開出下列物品" and "&f效率I.II.III.IV附魔書" and "&f書"

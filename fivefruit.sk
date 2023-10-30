@@ -28,9 +28,10 @@ On break:
 						set name of spawned entity to "自爆自氣的五蔬果"
 on damage of player:
 	chance of 50%:
-		if attacker is a skeleton or zombie or zombified piglin or husk or Stray or spider or cave spider:
-			apply potion of WITHER of tier 1 to victim for 5 seconds
-			send "你因為受到怪物攻擊而失血" to victim
+		if victim is not defending:
+			if attacker is a skeleton or zombie or zombified piglin or husk or Stray or spider or cave spider:
+				apply potion of WITHER of tier 1 to victim for 5 seconds
+				send "你因為受到怪物攻擊而失血" to victim
 on break:
 	if player has nether star named "&e五蔬果的力量":
 		stop
@@ -156,11 +157,10 @@ on fish:
 		chance of 0.5%:
 			give player {fivefruitfish}
 			broadcast "玩家%event-player%在釣魚時發現了五蔬果的祝福殘章，請祝賀他吧!"
-on break:
-	if event-block is ripe carrot plant or ripe wheat plant or ripe beetroot plant or ripe potato plant:
-		chance of 90%:
-			give player {fivefruitfarm}
-			broadcast "玩家%event-player%在種田時發現了五蔬果的悠閒殘章，請祝賀他吧!"
+on break of ripe carrot plant or ripe wheat plant or ripe beetroot plant or ripe potato plant:
+	chance of 0.5%:
+		give player {fivefruitfarm}
+		broadcast "玩家%event-player%在種田時發現了五蔬果的悠閒殘章，請祝賀他吧!"
 on drop:
 	if lore of event-item contains "&4綁定角色":
 		send "你無法丟出綁定角色的物品"
