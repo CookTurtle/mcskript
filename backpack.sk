@@ -13,6 +13,8 @@ on inventory close:
 			set {bp::%player%::%{_slot}%} to slot {_slot} of current inventory of player
 			add 1 to {_slot}
 on inventory click:
+	if name of event-inventory is "Shopkeeper Editor" or "垃圾桶":
+		stop
 	if name of event-inventory is "&4角色背包":
 		if event-item is not set:
 			stop
@@ -21,5 +23,11 @@ on inventory click:
 			send "&c無法放入原版物品"
 	if lore of event-item contains "&4綁定角色":
 		if name of event-inventory is not "&4角色背包":
-			cancel event
-			send "&c綁定角色的物品僅能放入角色背包"
+			if {invopen::%player%} is not true:
+				cancel event
+				send "&c綁定角色的物品僅能放入角色背包"
+on inventory open:
+	if type of event-inventory is merchant inventory:
+		set {invopen::%player%} to true
+on inventory close:
+	delete {invopen::%player%}

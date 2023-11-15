@@ -19,7 +19,7 @@ on player move:
 			send "你已經死亡，請輸入/death 開啟復活選單"
 on command:
 	if {death::%player%} is true:
-		if command is not "death":
+		if command is not "death" or "cp":
 			send "你已經死亡，請輸入/death 開啟復活選單"
 			cancel event
 on entity target:

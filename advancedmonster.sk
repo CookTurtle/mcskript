@@ -67,13 +67,15 @@ on death:
 		else if victim is a skeleton:
 			replace every "[等級:" and "]" and "<不怕太陽的>菁英骷髏" with "" in {_name}
 		set {_level} to {_name} parsed as an integer
-		set {_money} to {_level} / 10 * {_random}
+		set {_money} to {_level} / 10 * {_random} + 1
 		add {_money} to attacker's balance
 		send "&a你透過擊殺&r%name of victim%&a額外獲得了%{_money}%銀幣" to attacker
 		chance of {_level} / 2%:
 			drop {fivefruitdeath} at victim's location
 		chance of {_level} / 10 * {_random}%:
 			drop {fivefruitlevelup} at victim's location
+		chance of 3%:
+			drop {fivefruitnice} at victim's location
 on anvil prepare:
 	if slot 0 of event-inventory is a diamond axe or netherite axe or diamond sword or netherite sword:
 		if lore of slot 0 of event-inventory contains "&4無法再次強化":

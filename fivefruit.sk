@@ -6,6 +6,7 @@ on load:
 	set {fivefruitspider} to mourner pottery sherd named "&d五蔬果的蹦蹦跳跳殘章" with lore "&f五蔬果蹦蹦跳跳的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
 	set {fivefruitbig} to blade pottery sherd named "&d五蔬果的勇猛殘章" with lore "&f五蔬果勇猛的殘章" and "&f集滿每片不同的殘章組合起來" and "&f可以組合成五蔬果的力量" and "&4綁定角色"
 	set {fivefruitdeath} to glowing lapis lazuli named "&d五蔬果的恩寵" with lore "&f五蔬果的恩寵" and "&f可以無懲罰的原地滿血復活"
+	set {fivefruitfirework} to glowing echo shard named "&f大捲鞭炮" with lore "&f在五蔬果日時使用" and "&f可以把酒醉的五蔬果嚇醒"
 	set {fivefruitdeathshard} to blue dye named "&f充滿能量的恩寵碎片" with lore "&f碎片中充滿了五蔬果的恩寵能量" and "&f集滿9個可以到合成台合成一個五蔬果的恩寵"
 	set {fivefruitwine} to honey bottle named "&f金門58度高粱酒" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
 	set {fivefruitsmoke} to dried kelp named "&f寶亨香菸" with lore "&9可在五蔬果酒醉日來臨時正常食用" and "&9食用後可以獲得增益效果" and "&9如果在一般日子時食用增益效果減半"
@@ -18,12 +19,13 @@ On break:
 	else:
 		if event-location's y-coordinate < 50:
 			if event-block is stone or deepslate or cobbled_deepslate or dirt or cobblestone or gravel or tuff or calcite or granite or diorite or andesite:
+				set {_random} to a random integer between 1 and 100
 				if lore of player's held item contain "&7五蔬果的妥協":
-					chance of 1%:
+					if {_random} > 98:
 						summon a creeper at event-player
 						set name of spawned entity to "自爆自氣的五蔬果"
 				else:
-					chance of 5%:
+					if {_random} > 94:
 						summon a creeper at event-player
 						set name of spawned entity to "自爆自氣的五蔬果"
 on damage of player:
@@ -76,17 +78,19 @@ at 0:00:
 		broadcast "&4五蔬果今天喝醉了，所有人的視線及移動速度都將受到影響!"
 at 23:50:
 	set {fivefruitday} to 0
+On Bed Enter:
+	set {fivefruitday} to 0
 every 20 seconds:
 	loop all players:
 		if {fivefruitday} is 1:
 			if loop-player has {fivefruitfinal}:
 			else:
-				apply potion of darkness of tier 1 to loop-player for 21 seconds
-				apply potion of slowness of tier 1 to loop-player for 21 seconds
-				apply potion of weakness of tier 1 to loop-player for 21 seconds
-				apply potion of resistance of tier 1 to loop-player for 21 seconds
-				apply potion of regeneration of tier 1 to loop-player for 21 seconds
-				apply potion of health boost of tier 1 to loop-player for 21 seconds
+				apply potion of darkness of tier 1 to loop-player for 20 seconds
+				apply potion of slowness of tier 1 to loop-player for 20 seconds
+				apply potion of weakness of tier 1 to loop-player for 20 seconds
+				apply potion of resistance of tier 1 to loop-player for 20 seconds
+				apply potion of regeneration of tier 1 to loop-player for 20 seconds
+				apply potion of health boost of tier 1 to loop-player for 20 seconds
 on eat:
 	if {fivefruitday} is 1:
 		if name of event-item is "&f金門58度高粱酒":
@@ -157,6 +161,19 @@ on fish:
 		chance of 0.5%:
 			give player {fivefruitfish}
 			broadcast "玩家%event-player%在釣魚時發現了五蔬果的祝福殘章，請祝賀他吧!"
+on rightclick:
+	if type of event-item is echo shard:
+		if name of event-item is "&f大捲鞭炮":
+			broadcast "%player%使用了大捲鞭炮嚇醒了五蔬果!"
+			remove 1 of event-item from player's inventory
+			set {fivefruitday} to 0
+			loop all players:
+				play sound "item.flintandsteel.use" at loop-player
+				wait 2 seconds
+				loop 5 times:
+					play sound "entity.firework_rocket.launch" at loop-player
+					wait 1 seconds
+					play sound "entity.generic.explode" at loop-player
 on break of ripe carrot plant or ripe wheat plant or ripe beetroot plant or ripe potato plant:
 	chance of 0.5%:
 		give player {fivefruitfarm}
@@ -191,7 +208,7 @@ on death:
 	if victim is not a player:
 		if attacker is a player:
 			chance of 5%:
-				give attacker {fivefruitdeathshard}
+				drop {fivefruitdeathshard} at victim
 on craft:
 	if event-item is {fivefruitfinal}:
 		broadcast "偉大的冒險家&c%player%&f找回了&e五蔬果的力量!&f發現了神奇的物品!"

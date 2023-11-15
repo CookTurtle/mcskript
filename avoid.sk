@@ -1,5 +1,5 @@
 on preparing craft:
-	if type of event-item is book or enchanted book or lapis lazuli or nether star:
+	if type of event-item is book or enchanted book or lapis lazuli or nether star or glowing paper:
 		stop
 	else:
 		if event-item is netherite ingot named "&f修補附魔石":
@@ -12,29 +12,21 @@ on preparing craft:
 				else:
 					add 1 to {_loop}
 on anvil prepare:
-	if slot 1 of event-inventory is not {fivefruitnice} or {fivefruitlevelup}:
-		set event-slot to air
-on explode:
-	if event-entity is a creeper:
-		set {_place} to event-entity's location
-		play sound "entity.generic.explode" at {_place}
-		cancel the event
-command /money:
-	trigger:
-		send "你擁有%balance of player%銀幣"
-command /shop:
-	trigger:
-		make player run command "/warp shop" as op
+	if name of slot 1 of event-inventory is set:
+		if type of slot 1 of event-inventory is enchanted book:
+			if name of slot 1 of event-inventory is "附魔書":
+				stop
+		else if slot 1 of event-inventory is not {fivefruitnice} or {fivefruitlevelup}:
+			set event-slot to air
+	else:
+		stop
 on spawn:
 	if "%Spawn Reason%" is "drowned":
-		cancel event
+		if name of event-entity contains "等級:":
+			cancel event
+			delete event-entity
 	if "%Spawn Reason%" is "mob spawner":
 		cancel event
-on rightclick:
-	if event-block is spruce log or jungle log or birch log or oak log or acacia log or dark oak log or mangrove log or cherry log or crimson stem or warped stem:
-		if player's held item is wooden axe or stone axe or iron axe or golden axe or diamond axe or netherite axe:
-			if player is defending:
-				cancel event
 on rightclick:
 	if event-block is smithing table:
 		loop all items in the player's inventory:
@@ -43,11 +35,17 @@ on rightclick:
 				send "&c請將背包中所有&f修補附魔石&c移除，否則無法開啟鍛造台!"
 				stop
 		set {smithing::%player%} to true
+on rightclick on item frame:
+	if lore of event-item contains "&4綁定角色":
+		cancel event
+		send "&c無法將綁定角色的物品放到物品展示框中" to event-player
 on pickup:
 	if {smithing::%player%} is true:
 		cancel event
 on inventory close:
 	if {smithing::%player%} is set:
 		delete {smithing::%player%}
-on spawn of phantom:
+on enderman place:
+	cancel event
+on enderman pickup:
 	cancel event

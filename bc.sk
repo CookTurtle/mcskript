@@ -1,0 +1,9 @@
+on load:
+	set {msg::1} to "輸入/menu可以打開遊戲選單，更快速的使用各種功能以及查看最新序號"
+	set {msg::2} to "手持種子並Shift+右鍵泥土，可以消耗16個種子把泥土變成草地"
+	set {msg::3} to "手持十字鎬並按住Shift破壞地上的礫石，可以100%%得到燧石"
+	set {msg::4} to "輸入指令/backpack可以開啟角色背包，可以放入有命名的物品"
+	set {msg::5} to "輸入指令/atm <面額50/100> <數量>可以從帳戶中提款現金"
+every 5 minutes:
+	set {_random} to a random integer between 1 and 3
+	broadcast "&a%{msg::%{_random}%}%"

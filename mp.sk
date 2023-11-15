@@ -1,0 +1,34 @@
+on load:
+	set {fivefruitstorage} to glowing paper named "&a隨身背包欄位擴張券" with lore "&5用於擴張隨身背包1格欄位" and "&5可於五蔬果商城購買" and "&4綁定角色"
+on join:
+	if {minepackmax::%player%} is not set:
+		set {minepackmax::%player%} to 9
+command /minepack:
+	trigger:
+		set {_mp} to a new chest inventory with 6 row with name "&a隨身背包"
+		open {_mp} to player
+		set {_slot} to 0
+		loop {minepackmax::%player%} times:
+			set slot {_slot} of current inventory of player to {minepack::%player%::%{_slot}%}
+			add 1 to {_slot}
+		set {_max} to 54
+		set {_now} to 54 - {minepackmax::%player%}
+		set {_p} to {minepackmax::%player%}
+		loop {_now} times:
+			set slot {_p} of current inventory of player to barrier named "&c尚未開啟的欄位"
+			add 1 to {_p}
+on inventory click:
+	if name of event-inventory is "&a隨身背包":
+		if name of event-item is "&c尚未開啟的欄位":
+			cancel event
+on inventory close:
+	if name of event-inventory is "&a隨身背包":
+		set {_slot} to 0
+		loop {minepackmax::%player%} times:
+			set {minepack::%player%::%{_slot}%} to slot {_slot} of current inventory of player
+			add 1 to {_slot}
+on rightclick with paper:
+	if name of event-item is "&a隨身背包欄位擴張券":
+		add 1 to {minepackmax::%player%}
+		send "&a已使用擴張券，隨身背包欄位增加一格"
+		remove 1 of {fivefruitstorage} from player's inventory

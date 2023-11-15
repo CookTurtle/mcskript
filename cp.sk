@@ -1,0 +1,53 @@
+command /sn <text> <text>:
+	usage: /sn use <序號>
+	trigger:
+		set {_cp} to arg-2 in lower case
+		if arg-1 is "use":
+			if {cplist::%{_cp}%} is set:
+				if {cp::%{_cp}%::%player%} is not set:
+					if player doesn't have enough space for {cprewardindex::%{_cp}%} of diamond boots:
+						send "&c沒有空的欄位，總共需要%{cprewardindex::%{_cp}%}%格背包欄位!"
+					else:
+						set {cp::%{_cp}%::%player%} to true
+						give {cpreward::%{_cp}%::*} to player
+						send "&a已領取序號%{_cp}%"
+				else:
+					send "&c無法重複使用!"
+			else:
+				send "&c序號不存在"
+		if arg-1 is "create":
+			if {cplist::%{_cp}%} is not set:
+				set {cplist::%{_cp}%} to true
+				send "&a已建立序號%{_cp}%"
+				set {cprewardindex::%{_cp}%} to 0
+			else:
+				send "&c序號已存在"
+		if arg-1 is "delete":
+			delete {cpreward::%{_cp}%::*}
+			delete {cp::%{_cp}%::*}
+			delete {cprewardindex::%{_cp}%}
+			delete {cplist::%{_cp}%}
+			send "&c已刪除序號%{_cp}%"
+command /snset <text> <text> <number>:
+	trigger:
+		if {cplist::%arg-1%} is not set:
+			send "&c序號不存在"
+		else:
+			if arg-2 is "add":
+				if {cpreward::%arg-1%::%arg-3%} is not set:
+					set {cpreward::%arg-1%::%arg-3%} to player's held item
+					send "&a已添加%player's held item%至序列%arg-3%"
+					add 1 to {cprewardindex::%arg-1%}
+				else:
+					send "&c該序列已存在"
+			if arg-2 is "del":
+				delete {cpreward::%arg-1%::%arg-3%}
+				subtract 1 from {cprewardindex::%arg-1%}
+			if arg-2 is "list":
+				send "%{cpreward::%arg-1%::*}%"
+command /snad <text> <player> <text>:
+	trigger:
+		if arg-1 is "reset":
+			set {_rsplayer} to arg-2
+			delete {cp::%arg-3%::%{_rsplayer}%}
+			send "&c已重製玩家%{_rsplayer}%的序號%arg-3%"

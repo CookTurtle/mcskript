@@ -89,40 +89,29 @@ on load:
 	register new shapeless recipe for {advenbook::sweeping} using {adven::sweeping}, book, air, air, air, air, air, air and air with id "sweeping"
 	register new shapeless recipe for {advenbook::thorns} using {adven::thorns}, book, air, air, air, air, air, air and air with id "thorns"
 	register new shapeless recipe for {advenbook::unbreaking} using {adven::unbreaking}, book, air, air, air, air, air, air and air with id "unbreaking"
-	set {advenedbook::fire} to enchanted book
-	enchant {advenedbook::fire} with fire aspect 1
-	register new shapeless recipe for {advenedbook::fire} using {adven::fire}, book, air, air, air, air, air, air and air with id "fire"
-	set {advenedbook::frost} to enchanted book
-	enchant {advenedbook::frost} with frost walker 1
+	set {advenbook::fire} to glowing paper named "&f燃燒附魔書兌換券" with lore "&5可以前往五蔬果商城兌換燃燒附魔書"
+	register new shapeless recipe for {advenbook::fire} using {adven::fire}, book, air, air, air, air, air, air and air with id "fire"
+	set {advenbook::frost} to glowing paper named "&f冰霜行者附魔書兌換券" with lore "&5可以前往五蔬果商城兌換冰霜行者附魔書"
 	register new shapeless recipe for {advenedbook::frost} using {adven::frost}, book, air, air, air, air, air, air and air with id "frost"
-	set {advenedbook::knockback} to enchanted book
-	enchant {advenedbook::knockback} with knockback 1
-	register new shapeless recipe for {advenedbook::knockback} using {adven::knockback}, book, air, air, air, air, air, air and air with id "knockback"
-	set {advenedbook::punch} to enchanted book
-	enchant {advenedbook::punch} with punch 1
-	register new shapeless recipe for {advenedbook::punch} using {adven::punch}, book, air, air, air, air, air, air and air with id "punch"
-	set {advenedbook::aqua} to enchanted book
-	enchant {advenedbook::aqua} with aqua affinity 1
-	register new shapeless recipe for {advenedbook::aqua} using {adven::aqua}, book, air, air, air, air, air, air and air with id "aqua"
-	set {advenedbook::channel} to enchanted book
-	enchant {advenedbook::channel} with channeling 1
-	register new shapeless recipe for {advenedbook::channel} using {adven::channel}, book, air, air, air, air, air, air and air with id "channel"
-	set {advenedbook::flame} to enchanted book
-	enchant {advenedbook::flame} with flame 1
-	register new shapeless recipe for {advenedbook::flame} using {adven::flame}, book, air, air, air, air, air, air and air with id "flame"
-	set {advenedbook::infinity} to enchanted book
-	enchant {advenedbook::infinity} with infinity 1
-	register new shapeless recipe for {advenedbook::infinity} using {adven::infinity}, book, air, air, air, air, air, air and air with id "infinity"
-	set {advenedbook::muti} to enchanted book
-	enchant {advenedbook::muti} with multishot 1
+	set {advenbook::knockback} to glowing paper named "&f擊退附魔書兌換券" with lore "&5可以前往五蔬果商城兌換擊退附魔書"
+	register new shapeless recipe for {advenbook::knockback} using {adven::knockback}, book, air, air, air, air, air, air and air with id "knockback"
+	set {advenbook::punch} to glowing paper named "&f衝擊附魔書兌換券" with lore "&5可以前往五蔬果商城兌換衝擊附魔書"
+	register new shapeless recipe for {advenbook::punch} using {adven::punch}, book, air, air, air, air, air, air and air with id "punch"
+	set {advenbook::aqua} to glowing paper named "&f親水性附魔書兌換券" with lore "&5可以前往五蔬果商城兌換親水性附魔書"
+	register new shapeless recipe for {advenbook::aqua} using {adven::aqua}, book, air, air, air, air, air, air and air with id "aqua"
+	set {advenbook::channel} to glowing paper named "&f喚雷附魔書兌換券" with lore "&5可以前往五蔬果商城兌換喚雷附魔書"
+	register new shapeless recipe for {advenbook::channel} using {adven::channel}, book, air, air, air, air, air, air and air with id "channel"
+	set {advenbook::flame} to glowing paper named "&f火焰附魔書兌換券" with lore "&5可以前往五蔬果商城兌換火焰附魔書"
+	register new shapeless recipe for {advenbook::flame} using {adven::flame}, book, air, air, air, air, air, air and air with id "flame"
+	set {advenbook::infinity} to glowing paper named "&f無限附魔書兌換券" with lore "&5可以前往五蔬果商城兌換無限附魔書"
+	register new shapeless recipe for {advenbook::infinity} using {adven::infinity}, book, air, air, air, air, air, air and air with id "infinity"
+	set {advenbook::muti} to glowing paper named "&f分裂箭矢附魔書兌換券" with lore "&5可以前往五蔬果商城兌換分裂箭矢附魔書"
 	register new shapeless recipe for {advenedbook::muti} using {adven::muti}, book, air, air, air, air, air, air and air with id "multishot"
-	set {advenedbook::silk} to enchanted book
-	enchant {advenedbook::silk} with silk touch 1
-	register new shapeless recipe for {advenedbook::silk} using {adven::silk}, book, air, air, air, air, air, air and air with id "silk"
+	set {advenbook::silk} to glowing paper named "&f絲綢附魔書兌換券" with lore "&5可以前往五蔬果商城兌換絲綢附魔書"
+	register new shapeless recipe for {advenbook::silk} using {adven::silk}, book, air, air, air, air, air, air and air with id "silktouch"
 	register new shapeless recipe for {adven::exp} using {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini}, {adven::expmini} and {adven::expmini} with id "expmini"
-	set {advenedbook::exp} to enchanted book
-	enchant {advenedbook::exp} with mending 1
-	register new shapeless recipe for {advenedbook::exp} using {adven::exp}, book, air, air, air, air, air, air and air with id "exp"
+	set {advenbook::exp} to glowing paper named "&f修補附魔書兌換券" with lore "&5可以前往五蔬果商城兌換修補附魔書"
+	register new shapeless recipe for {advenbook::exp} using {adven::exp}, book, air, air, air, air, air, air and air with id "expbook"
 on rightclick on enchanting table:
 	cancel event
 command /adven <text> <text> <number>:
@@ -226,63 +215,45 @@ on rightclick:
 			remove 1 of event-item from player's inventory
 			if {_max} is 5:
 				chance of 30%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 1" as op
 					send "&a你獲得了一個%{_enchanttw}%1附魔書"
 					stop
 				chance of 10%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 2" as op
 					send "&a你獲得了一個%{_enchanttw}%2附魔書"
 					stop
 				chance of 8%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 3" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 3" as op
 					send "&a你獲得了一個%{_enchanttw}%3附魔書"
 					stop
 				chance of 2%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 4" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 4" as op
 					send "&a你獲得了一個%{_enchanttw}%4附魔書"
 					stop
 				give player a book
 				send "&a你獲得了一個書"
 			else if {_max} is 4:
 				chance of 40%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 1" as op
 					send "&a你獲得了一個%{_enchanttw}%1附魔書"
 					stop
 				chance of 8%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 2" as op
 					send "&a你獲得了一個%{_enchanttw}%2附魔書"
 					stop
 				chance of 42%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 3" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 3" as op
 					send "&a你獲得了一個%{_enchanttw}%3附魔書"
 					stop
 				give player a book
 				send "&a你獲得了一個書"
 			else if {_max} is 3:
 				chance of 30%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 1" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 1" as op
 					send "&a你獲得了一個%{_enchanttw}%1附魔書"
 					stop
 				chance of 10%:
-					set {_book} to a enchanted book
-					enchant {_book} with "%{_enchant}% 2" parsed as enchantment type
-					give player {_book}
+					make player run command "/enchbook newbook %{_enchant}% 2" as op
 					send "&a你獲得了一個%{_enchanttw}%2附魔書"
 					stop
 				give player a book

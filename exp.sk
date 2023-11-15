@@ -1,0 +1,16 @@
+command /sellxp:
+	trigger:
+		if player's level is greater than or equal to 30:
+			make console execute command "/xp take %player% 30l"
+			add 100 to player's balance
+			send "&a已販售等級30等，現在持有%player's balance%銀幣"
+		else:
+			send "&c你的等級不滿30等，需要滿30等才可以販售"
+command /buyxp:
+	trigger:
+		if player's balance > 300:
+			make console execute command "/xp give %player% 30l"	
+			remove 300 from player's balance
+			send "&a已購買等級30等並花費300銀幣，現在剩下%player's balance%銀幣"
+		else:
+			send "&c你的銀幣不足300元，無法購買30等!"

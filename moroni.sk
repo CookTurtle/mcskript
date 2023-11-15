@@ -1,11 +1,11 @@
 on load:
-	set {maxmoroni::zombie} to 500
-	set {maxmoroni::skeleton} to 500
-	set {maxmoroni::spider} to 500
-	set {maxmoroni::creeper} to 500
-	set {maxmoroni::pigzombie} to 500
-	set {maxmoroni::blaze} to 300
-	set {maxmoroni::witherskeleton} to 300
+	set {maxmoroni::zombie} to 100
+	set {maxmoroni::skeleton} to 100
+	set {maxmoroni::spider} to 100
+	set {maxmoroni::creeper} to 100
+	set {maxmoroni::pigzombie} to 100
+	set {maxmoroni::blaze} to 80
+	set {maxmoroni::witherskeleton} to 80
 	set {moroni::0} to "zombie"
 	set {moroni::1} to "skeleton"
 	set {moroni::2} to "spider"
@@ -53,24 +53,24 @@ command /moroni <text> <text>:
 				send "&a已售出%arg-2%的馬羅尼石頭並獲得100銀幣"
 				add 100 to player's balance
 				chance of 50%:
-					give player {fivefruitdeathshard}
-					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitdeathshard}%"
+					give player {fivefruitdeath}
+					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitdeath}%"
 					stop
 				chance of 20%:
-					give player 2 of {10dollor}
-					send "&a你在售出馬羅尼石頭時發現了2個%name of {10dollor}%"
-					stop
-				chance of 10%:
-					give player {adven::expmini}
-					send "&a你在售出馬羅尼石頭時發現了%name of {adven::expmini}%"
-					stop
+					give player {100dollor}
+					send "&a你在售出馬羅尼石頭時發現了1個%name of {100dollor}%"
+					stop	
 				chance of 10%:
 					give player {fivefruitnice}
 					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitnice}%"
 					stop
 				chance of 10%:
-					give player {fivefruitdeath}
-					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitdeath}%"
+					give player {fivefruitfirework}
+					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitfirework}%"
+					stop
+				chance of 10%:
+					give player {fivefruitsmoke}
+					send "&a你在售出馬羅尼石頭時發現了%name of {fivefruitsmoke}%"
 					stop
 			else:
 				send "&c你所持有的%arg-2%馬羅尼石頭內的標本數量未滿"

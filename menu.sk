@@ -1,0 +1,67 @@
+command /menu:
+	trigger:
+		set {_menu} to a new chest inventory with 5 row named "&d遊戲選單"
+		set {_loop} to 0
+		loop 10 times:
+			set slot {_loop} of {_menu} to pink stained glass pane named ""
+			add 1 to {_loop}
+		set {_loop} to 35
+		loop 10 times:
+			set slot {_loop} of {_menu} to pink stained glass pane named ""
+			add 1 to {_loop}
+		set slot 17 of {_menu} to pink stained glass pane named ""
+		set slot 18 of {_menu} to pink stained glass pane named ""
+		set slot 26 of {_menu} to pink stained glass pane named ""
+		set slot 27 of {_menu} to pink stained glass pane named ""
+		set slot 10 of {_menu} to glowing diamond named "&f前往五蔬果商店" with lore "&5點擊傳送至五蔬果商店"
+		set slot 11 of {_menu} to glowing emerald named "&f查看持有銀幣" with lore "&5點擊查看持有銀幣數量"
+		set slot 12 of {_menu} to glowing cod named "&f開啟漁獲商店" with lore "&5點擊開啟魚貨商店"
+		set slot 13 of {_menu} to skull of ("pallinodorato" parsed as offline player) named "&f開啟馬羅尼系統" with lore "&5點擊開啟馬羅尼系統" and "&5跟NPC的介面一模一樣"
+		set slot 14 of {_menu} to glowing chest named "&f開啟角色背包" with lore "&5點擊開啟角色背包"
+		set slot 15 of {_menu} to glowing copper ingot named "&f查看ATM使用方法" with lore "&5點擊查看ATM使用方法"
+		set slot 16 of {_menu} to glowing paper named "&f查看序號使用方法" with lore "&5點擊查看序號使用方法" and "&5目前可用序號:" and "&dmain-tena-nce1-gift" and "&dfive-frui-tsmo-ke87"
+		set slot 19 of {_menu} to experience bottle named "&f販售30等經驗值" with lore "&5點擊以100銀幣販售30等經驗值"
+		set slot 20 of {_menu} to glowing paper named "&f查看所有已設置的口袋錨點" with lore "&5點擊查看所有已設置的口袋錨點"
+		set slot 21 of {_menu} to skull of ("%player%" parsed as offline player) named "&f拿一個自己的頭" with lore "&5點擊免費領取一顆自己的頭"
+		set slot 22 of {_menu} to oak sapling named "&f開關連鎖砍樹" with lore "&5點擊開關連鎖砍樹"
+		set slot 23 of {_menu} to seed named "&f開關連鎖作物收成" with lore "&5點擊開關連鎖作物收成"
+		set slot 24 of {_menu} to iron ore named "&f開關連鎖挖礦" with lore "&5點擊開關連鎖挖礦"
+		open {_menu} to player
+on inventory click:
+	if name of event-inventory is "&d遊戲選單":
+		cancel event
+		if name of event-item is "&f前往五蔬果商店":
+			make player run command "/warp shop" as op
+			close player's inventory
+		if name of event-item is "&f查看持有銀幣":
+			make player run command "/money" as op
+			close player's inventory
+		if name of event-item is "&f開啟漁獲商店":
+			make player run command "/emf shop" as op
+		if name of event-item is "&f開啟馬羅尼系統":
+			make player run command "/moronigui" as op
+		if name of event-item is "&f開啟角色背包":
+			make player run command "/backpack" as op
+		if name of event-item is "&f查看ATM使用方法":
+			send "輸入下列指令"
+			make player run command "/atm" as op
+		if name of event-item is "&f查看序號使用方法":
+			send "輸入下列指令"
+			make player run command "/sn" as op
+		if name of event-item is "&f販售30等經驗值":
+			make player run command "/sellxp" as op
+			close player's inventory
+		if name of event-item is "&f查看所有已設置的口袋錨點":
+			make player run command "/tplist" as op
+		if name of event-item is "&f拿一個自己的頭":
+			make player run command "/skull %player%" as op
+			close player's inventory
+		if name of event-item is "&f開關連鎖砍樹":
+			make player run command "/sh logging" as op
+			close player's inventory
+		if name of event-item is "&f開關連鎖作物收成":
+			make player run command "/sh farming" as op
+			close player's inventory
+		if name of event-item is "&f開關連鎖挖礦":
+			make player run command "/sh mining" as op
+			close player's inventory

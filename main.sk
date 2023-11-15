@@ -1,0 +1,73 @@
+on rightclick:
+	if type of player's held item is seed:
+		if event-block is dirt:
+			if player has 16 of seed:
+				set event-block to grass
+				remove 16 of seed from player's inventory
+on spawn of phantom:
+	cancel event
+on rightclick:
+	if event-block is spruce log or jungle log or birch log or oak log or acacia log or dark oak log or mangrove log or cherry log or crimson stem or warped stem:
+		if player's held item is wooden axe or stone axe or iron axe or golden axe or diamond axe or netherite axe:
+			cancel event
+			send "&c如要剝皮請使用剪刀"
+		if player's held item is shears:
+			if event-block is spruce log:
+				set event-block to stripped spruce log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is oak log:
+				set event-block to stripped oak log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is jungle log:
+				set event-block to stripped jungle log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is birch log:
+				set event-block to stripped birch log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is acacia log:
+				set event-block to stripped acacia log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is dark oak log:
+				set event-block to stripped dark oak log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is mangrove log:
+				set event-block to stripped mangrove log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is cherry log:
+				set event-block to stripped cherry log
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is crimson stem:
+				set event-block to stripped crimson stem
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+			if event-block is warped stem:
+				set event-block to stripped warped stem
+				play sound "item.axe.strip" to player
+				add 1 to the damage value of tool of player
+on explode:
+	if event-entity is a creeper:
+		set {_place} to event-entity's location
+		play sound "entity.generic.explode" at {_place}
+		cancel the event
+command /money:
+	trigger:
+		send "你擁有%balance of player%銀幣"
+command /shop:
+	trigger:
+		make player run command "/warp shop" as op
+on break of gravel:
+	if player is sneaking:
+		if type of player's held item is pickaxe:
+			cancel event
+			set event-block to air
+			play sound "block.lodestone.break" at event-block
+			add 1 to the damage value of tool of player
+			drop a flint at event-block

@@ -67,9 +67,6 @@ on inventory click:
 	if name of event-inventory is "&f口袋錨點列表":
 		cancel event
 		teleport player to {tpscoll::%player%::%name of event-item%}
-command /test:
-	trigger:
-		send "%{tpscollnum::%player%}%"
 command /setscoll:
 	trigger:
 		set {tpscollnum::%player%} to 0
